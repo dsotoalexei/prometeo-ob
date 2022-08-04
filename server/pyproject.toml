@@ -1,0 +1,94 @@
+[tool.poetry]
+name = "server"
+version = "0.1.0"
+description = ""
+authors = ["Prometeo Team"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "3.2.12"
+django-split-settings = "^1.1.0"
+python-decouple = "^3.6"
+structlog = "^21.5.0"
+djangorestframework = "^3.13.1"
+drf-spectacular = "^0.22.0"
+django-cors-headers = "^3.11.0"
+django-health-check = "^3.16.5"
+gunicorn = "^20.1.0"
+gevent = "^21.12.0"
+dj-database-url = "^0.5.0"
+psycopg2-binary = "^2.9.3"
+requests = {extras = ["security"], version = "^2.28.1"}
+
+[tool.poetry.dev-dependencies]
+pre-commit = "^2.17.0"
+black = "^22.3.0"
+flake8 = "^4.0.1"
+flake8-bugbear = "^22.3.23"
+isort = "^5.10.1"
+interrogate = "^1.5.0"
+bandit = "^1.7.4"
+pyupgrade = "^2.31.1"
+safety = "^1.10.3"
+ipython = "^8.2.0"
+nplusone = "^1.0.0"
+django-querycount = "^0.7.0"
+coverage = "^6.3.2"
+Sphinx = "^4.5.0"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
+
+[tool.interrogate]
+ignore-init-method = true
+ignore-init-module = true
+ignore-magic = false
+ignore-semiprivate = false
+ignore-private = false
+ignore-property-decorators = false
+ignore-module = true
+ignore-nested-functions = false
+ignore-nested-classes = true
+ignore-setters = false
+fail-under = 80
+exclude = ["setup.py", "docs", "build", "sphinx", "mkdocs"]
+ignore-regex = ["^get$", "^mock_.*", ".*BaseClass.*"]
+# possible values: 0 (minimal output), 1 (-v), 2 (-vv)
+verbose = 2
+quiet = false
+whitelist-regex = []
+color = true
+omit-covered-files = false
+generate-badge = "."
+badge-format = "svg"
+
+[tool.isort]
+multi_line_output = 3
+line_length = 88
+include_trailing_comma = true
+profile = "black"
+known_django = "django"
+sections = "FUTURE,STDLIB,DJANGO,THIRDPARTY,FIRSTPARTY,LOCALFOLDER"
+skip = [".tox", ".git", "__pycache__", "docs", "sphinx", "mkdocs", "requirements", "build", "dist", "**tests/fixtures/*", "**migrations/*", "*.pyc", "*.egg-info", ".cache", ".eggs"]
+
+[tool.black]
+line_length = 88
+
+[tool.coverage.paths]
+source = ["src", "*/site-packages"]
+
+[tool.coverage.run]
+branch = true
+source = ["src"]
+omit = ["*/venv/*", "*/staticfiles/*", "*/media/*", "*/tests/*", "*/migrations/*", "*/__init__.py", "*/manage.py", "*/asgi.py*", "*/wsgi.py", "*/settings/*", "*/docs/*", "*/sphinx/*", "*/conf.py"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 85
+exclude_lines = [
+  "raise NotImplementedError",
+  "def __repr__",
+  "if __name__ == .__main__.:",
+]

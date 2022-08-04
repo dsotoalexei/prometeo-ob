@@ -1,0 +1,113 @@
+# -- Project information --
+site_name: 'API Ripio DeFi'
+site_description: 'Documentación del proyecto API Ripio DeFi usando mkdocs'
+site_author: 'Ripio Team'
+site_url: 'https://app.ripio.com'
+
+
+# -- Repository --
+repo_name: 'ripio/rp-defi'
+repo_url: 'https://git.in.ripio.com/ripio/rp-defi'
+
+
+# -- Copyright --
+copyright: Derechos de autor &copy; 2022 <a href="https://app.ripio.com">Equipo de Ripio</a>, Mantenido por el equipo de Ripio.
+
+
+# -- Configuration --
+docs_dir: 'docs'
+site_dir: 'static/docs/'
+
+theme:
+  name: 'material'
+  language: 'es'
+  features:
+    - tabs
+    - instant
+  palette:
+    primary: 'deep purple'
+    accent: 'deep purple'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo: assets/images/logo.svg
+  favicon: assets/images/favicon.ico
+
+# -- Customization --
+extra:
+  search:
+    language: 'es'
+  version:
+    provider: mike
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+
+# -- Google Analytics --
+#google_analytics:
+#  - 'UA-XXXXXXXX-X'
+#  - 'auto'
+
+
+# -- Navigations --
+nav:
+  - Introducción: 'index.md'
+  - Desarrolladores:
+    - Conceptos:
+      - DeFi:
+        - 01 - DeFi o Finanzas Descentralizadas: developers/concept/defi/00-what-is-defi.md
+        - 02 - Ethereum: developers/concept/defi/01-what-is-ethereum.md
+        - 03 - Máquina Virtual de Ethereum (EVM): developers/concept/defi/02-evm.md
+        - 04 - Contratos inteligentes: developers/concept/defi/03-what-is-smart-contracts.md
+        - 05 - Cripto Bridge: developers/concept/defi/04-crypto-bridge.md
+        - 06 - DEX: developers/concept/defi/05-dex.md
+        - 07 - Token ERC-20: developers/concept/defi/06-token-erc-20.md
+        - 08 - LP Token: developers/concept/defi/07-lp-token.md
+        - 09 - Flash Loan: developers/concept/defi/08-flash-loan.md
+        - 10 - Polygon: developers/concept/defi/09-polygon.md
+        - 11 - Curve: developers/concept/defi/10-curve.md
+        - 12 - Compound: developers/concept/defi/11-compound.md
+        - 13 - AAVE: developers/concept/defi/12-aave.md
+        - 14 - MPC Wallet: developers/concept/defi/13-mpc-wallet.md
+        - 15 - AMM: developers/concept/defi/14-amm.md
+        - 16 - Bearish and Bullish: developers/concept/defi/15-bearish-and-bullish.md
+        - 17 - MetaMask: developers/concept/defi/16-metamask.md
+        - 18 - Solidity: developers/concept/defi/17-solidity.md
+        - 18 - DApps: developers/concept/defi/18-dapps.md
+    - Proyecto:
+      - Configuraciones:
+        - 00 - Seleccionar versión: developers/project/00-select-version.md
+        - 01 - Pyenv: developers/project/01-configuration-pyenv.md
+        - 02 - Poetry: developers/project/02-configuration-poetry.md
+        - 03 - Django: developers/project/03-configuration-django.md
+        - 04 - Editorconfig: developers/project/04-configuration-editorconfig.md
+        - 05 - IPython: developers/project/05-configuration-ipython.md
+        - 06 - Separar configuración de Django: developers/project/06-split-django-settings.md
+        - 07 - Configurar DRF: developers/project/07-configuration-drf.md
+        - 08 - Documentar API con DRF-Spectacular: developers/project/08-configuration-drf-spectacular.md
+        - 09 - Configurar CORS: developers/project/09-configuration-django-cors.md
+        - 10 - Configurar Health Check: developers/project/11-configuration-django-health-check.md
+        - 11 - Configurar NPlusone: developers/project/12-configurar-nplusone.md
+        - 12 - Configurar Querycount: developers/project/13-configuration-querycount.md
+        - 13 - Formateo y revisión de código: developers/project/14-configuration-code-reviewing-and-formatting-in-python.md
+        - 14 - Configurar Cobertura de pruebas (coverage): developers/project/15-configuration-coverage.md
+        - 15 - Documentar con Sphinx: developers/project/16-configuration-sphinx.md
+        - 16 - Documentar con Mkdocs: developers/project/17-configuration-mkdocs.md
+        - 17 - Desplegar proyecto con Docker: developers/project/18-configuration-docker.md
+        - 18 - Configurar Postgresql: developers/project/19-configuration-postgresql.md
+    - Convenciones:
+      - "Documentar código": "developers/conventions/docstring/google.md"
+      - "Guía de estilos": "developers/conventions/style-guide/google.md"
+      - "Versionado semántico": "developers/conventions/semantic-version/index.md"
+      - "Flujo de trabajo": "developers/conventions/git-flow/index.md"
+  - Acerca de:
+    - Contribución: about/contributing.md
+    - Licencia: about/license.md
+
+
+# -- Plugins --
+plugins:
+  - search:
+      min_search_length: 4

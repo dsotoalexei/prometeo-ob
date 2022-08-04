@@ -1,0 +1,23 @@
+version: "3.9"
+
+# ========================= SERVICES =======================
+services:
+  # ======================= MKDOCS =========================
+  mkdocs:
+    image: squidfunk/mkdocs-material
+    container_name: mkdocs-documentation
+    restart: always
+    ports:
+      - "8010:8010"
+    command: serve -a 0.0.0.0:8010
+    volumes:
+      - ./docs:/docs/docs
+      - ./mkdocs.yml:/docs/mkdocs.yml
+    networks:
+      - docs-mkdocs-network
+  # ======================= MKDOCS =========================
+
+# ========================= NETWORKS =======================
+networks:
+  docs-mkdocs-network:
+    driver: bridge
