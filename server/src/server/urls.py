@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+# from django.contrib import admin
 from django.urls import include, path
 
 from drf_spectacular.views import (
@@ -23,12 +23,23 @@ from drf_spectacular.views import (
 )
 from health_check import urls as health_urls
 
+# from server.apps.authentication.api import urls as authentication_urls
+from server.apps.authentication.api.viewsets import EmptyPayloadAPI
+
+api_v1_urlpatterns = [
+    # path("api/v1/", include(authentication_urls, namespace="v1-authentication")),
+    path("api/v1/authentication/login/", EmptyPayloadAPI.as_view()),
+]
+
 urlpatterns = [
-    path("admin/", admin.site.urls),
+    # path("admin/", admin.site.urls),
     # API Documentation
     path("", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
-    path("schema/", SpectacularAPIView.as_view(), name="schema"),
+    path("schema/v1/", SpectacularAPIView.as_view(api_version="v1"), name="schema"),
     # Health checks:
     path("health/", include(health_urls)),
 ]
+
+# API VERSION 1
+urlpatterns += api_v1_urlpatterns

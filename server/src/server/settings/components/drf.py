@@ -23,8 +23,21 @@ REST_FRAMEWORK = {
 }
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "Your Project API",
-    "DESCRIPTION": "Your project description",
+    "TITLE": "Prometeo OB API",
     "VERSION": "1.0.0",
+    "DESCRIPTION": "API for consulting information from Prometeo.",
+    "CAMELIZE_NAMES": True,
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "COMPONENT_SPLIT_REQUEST": True,
+    "SERVE_PERMISSIONS": ["rest_framework.permissions.AllowAny"],
+    "SCHEMA_PATH_PREFIX": "/api/v[0-9]",
+    "SERVE_INCLUDE_SCHEMA": False,
     # OTHER SETTINGS
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "filter": True,
+        "displayRequestDuration": True,
+        "syntaxHighlight.activate": True,
+        "syntaxHighlight.theme": "monokai",
+    },
 }
