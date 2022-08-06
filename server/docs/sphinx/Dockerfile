@@ -23,9 +23,9 @@ RUN pip install --upgrade pip \
 FROM python:3.9-slim-buster
 
 # -- Descripciones de la imagen --
-LABEL maintainer="Alexei Díaz Soto - alexei.diaz@ripio.com" \
+LABEL maintainer="Alexei Díaz Soto - dsoto.alexei@gmail.com" \
     description="Imagen para desplegar documentación de Sphinx" \
-    vendor="Ripio Team" \
+    vendor="ADS" \
     license="MIT" \
     version="1.0.0"
 

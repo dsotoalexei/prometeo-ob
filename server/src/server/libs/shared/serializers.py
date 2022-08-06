@@ -4,7 +4,7 @@ from .choices import ResponseStatusChoice
 
 
 class PrometeoResponseSerializer(serializers.Serializer):
-    """Serializer for login response
+    """Serializer for common response
     """
     status = serializers.ChoiceField(choices=ResponseStatusChoice.choices)
     key = serializers.CharField(required=False)
@@ -12,6 +12,6 @@ class PrometeoResponseSerializer(serializers.Serializer):
 
 
 class KeySerializer(serializers.Serializer):
-    """Serializer for validation request
+    """Serializer for validation request parameters
     """
     key = serializers.CharField()

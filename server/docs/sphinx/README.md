@@ -36,7 +36,7 @@ Usamos [SemVer](http://semver.org/) para el control de versiones.
 
 ## Autor
 
-- **Ripio Team**
+- **Alexei Diaz**
 
 ## Licencia
 

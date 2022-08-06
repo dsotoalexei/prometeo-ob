@@ -49,8 +49,12 @@ SEP = '/'
 # Routes to consult the Prometeo
 APIS_HOST_ROUTES = {
     # HTTP METHOD [POST]
-    'authentication_login': SEP.join([APIS_HOST, 'login']),
-    'authentication_logout': SEP.join([APIS_HOST, 'logout'])
+    'AUTHENTICATION_LOGIN': SEP.join([APIS_HOST, 'login']),
+    'AUTHENTICATION_LOGOUT': SEP.join([APIS_HOST, 'logout']),
+    'METAS_PROVIDER': SEP.join([APIS_HOST, 'provider']),
+    'USER_INFORMATION': SEP.join([APIS_HOST, 'info']),
+    'USER_ACCOUNT': SEP.join([APIS_HOST, 'account']),
+    'USER_CREDIT_CARD': SEP.join([APIS_HOST, 'credit-card']),
 }
 
 # =======================================================================

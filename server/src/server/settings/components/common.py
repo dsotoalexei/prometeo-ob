@@ -30,8 +30,8 @@ INSTALLED_APPS: Tuple[str, ...] = (
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # django-admin:
-    "django.contrib.admin",
-    "django.contrib.admindocs",
+    # "django.contrib.admin",
+    # "django.contrib.admindocs",
     # Security:
     # 'axes',
     # Health checks:

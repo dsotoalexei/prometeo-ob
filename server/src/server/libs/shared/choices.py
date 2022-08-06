@@ -11,6 +11,7 @@ class ResponseStatusChoice(models.TextChoices):
     INTERACTION_REQUIRED: Some kind of interactive login is required, could be a captcha or a security question
     ERROR = "error"
     LOGGED_OUT = "log_out"
+    SUCCESS = "success"
     """
     SELECT_CLIENT = "select_client"
     WRONG_CREDENTIALS = "wrong_credentials"
@@ -19,3 +20,4 @@ class ResponseStatusChoice(models.TextChoices):
     INTERACTION_REQUIRED = "interaction_required"
     ERROR = "error"
     LOGGED_OUT = "logged_out"
+    SUCCESS = "success"

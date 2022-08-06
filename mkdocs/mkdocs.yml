@@ -1,0 +1,92 @@
+# -- Project information --
+site_name: 'Documentation for Prometeo'
+site_description: 'Documentación del proyecto API Prometeo usando mkdocs'
+site_author: 'Alexei Diaz'
+site_url: 'https://prometeoapi.com/'
+
+
+# -- Repository --
+repo_name: 'dsotoalexei/prometeo-ob'
+repo_url: 'https://github.com/dsotoalexei/prometeo-ob'
+
+
+# -- Copyright --
+copyright: Derechos de autor &copy; 2022 <a href="https://prometeoapi.com/">Equipo de Prometeo</a>, Mantenido por el equipo de Prometeo.
+
+
+# -- Configuration --
+docs_dir: 'docs'
+site_dir: 'static/docs/'
+
+theme:
+  name: 'material'
+  language: 'es'
+  features:
+    - tabs
+    - instant
+  palette:
+    primary: 'deep red'
+    accent: 'deep red'
+  font:
+    text: 'Roboto'
+    code: 'Roboto Mono'
+  logo: assets/images/logo.svg
+  favicon: assets/images/favicon.ico
+
+# -- Customization --
+extra:
+  search:
+    language: 'es'
+  version:
+    provider: mike
+
+# Extensions
+markdown_extensions:
+  - markdown.extensions.admonition
+  - markdown.extensions.attr_list
+
+# -- Google Analytics --
+#google_analytics:
+#  - 'UA-XXXXXXXX-X'
+#  - 'auto'
+
+
+# -- Navigations --
+nav:
+  - Introducción: 'index.md'
+  - Desarrolladores:
+    - Proyecto:
+      - Configuraciones:
+        - 00 - Seleccionar versión: developers/project/00-select-version.md
+        - 01 - Pyenv: developers/project/01-configuration-pyenv.md
+        - 02 - Poetry: developers/project/02-configuration-poetry.md
+        - 03 - Django: developers/project/03-configuration-django.md
+        - 04 - Editorconfig: developers/project/04-configuration-editorconfig.md
+        - 05 - IPython: developers/project/05-configuration-ipython.md
+        - 06 - Separar configuración de Django: developers/project/06-split-django-settings.md
+        - 07 - Configurar DRF: developers/project/07-configuration-drf.md
+        - 08 - Documentar API con DRF-Spectacular: developers/project/08-configuration-drf-spectacular.md
+        - 09 - Configurar CORS: developers/project/09-configuration-django-cors.md
+        - 10 - Configurar Health Check: developers/project/11-configuration-django-health-check.md
+        - 11 - Configurar NPlusone: developers/project/12-configurar-nplusone.md
+        - 12 - Configurar Querycount: developers/project/13-configuration-querycount.md
+        - 13 - Formateo y revisión de código: developers/project/14-configuration-code-reviewing-and-formatting-in-python.md
+        - 14 - Configurar Cobertura de pruebas (coverage): developers/project/15-configuration-coverage.md
+        - 15 - Documentar con Sphinx: developers/project/16-configuration-sphinx.md
+        - 16 - Documentar con Mkdocs: developers/project/17-configuration-mkdocs.md
+        - 17 - Desplegar proyecto con Docker: developers/project/18-configuration-docker.md
+        - 18 - Configurar Postgresql: developers/project/19-configuration-postgresql.md
+    - Convenciones:
+      - "Documentar código": "developers/conventions/docstring/google.md"
+      - "Guía de estilos": "developers/conventions/style-guide/google.md"
+      - "Versionado semántico": "developers/conventions/semantic-version/index.md"
+      - "Flujo de trabajo": "developers/conventions/git-flow/index.md"
+  - Acerca de:
+    - Contribución: about/contributing.md
+    - Licencia: about/license.md
+
+
+# -- Plugins --
+plugins:
+  - search:
+      min_search_length: 4

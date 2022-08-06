@@ -50,9 +50,9 @@ WORKDIR /opt
 FROM python:3.9.4-slim-buster AS development-code
 
 # -- Descripciones de la imagen --
-LABEL maintainer="Ripio Team - support@ripio.com" \
+LABEL maintainer="Alexei Diaz Soto - dsoto.alexei@gmail.com" \
     description="Image to deploy applications with the Django Framework" \
-    vendor="Ripio" \
+    vendor="ADS" \
     license=MIT \
     version=1.0.0
 
@@ -111,9 +111,9 @@ USER ${AAPP_USER}:${AAPP_GROUP}
 FROM python:3.9.4-slim-buster AS production-code
 
 # -- Descripciones de la imagen --
-LABEL maintainer="Ripio Team - support@ripio.com" \
+LABEL maintainer="Alexei Diaz - dsoto.alexei@gmail.com" \
     description="Image to deploy applications with the Django Framework" \
-    vendor="Ripio" \
+    vendor="ADS" \
     license=MIT \
     version=1.0.0
 

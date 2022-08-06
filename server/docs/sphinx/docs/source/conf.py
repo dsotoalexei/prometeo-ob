@@ -18,9 +18,9 @@ sys.setrecursionlimit(1500)
 
 # -- Project information -----------------------------------------------------
 
-project = "Ripio DeFi"
-copyright = "2022, Ripio Team"
-author = "Ripio Team"
+project = "Prometeo OB"
+copyright = "2022, Prometeo OB"
+author = "Alexei Diaz"
 
 # The full version, including alpha/beta/rc tags
 release = "1.0.0"

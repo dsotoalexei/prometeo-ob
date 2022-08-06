@@ -33,7 +33,7 @@ class AuthenticationService():
             Response: A dict representation of the APi'S JSON reply
             bool: Returns a false boolean if there is any error when making the request
         """
-        url = f"{APIS_HOST_ROUTES.get('authentication_login')}/"
+        url = f"{APIS_HOST_ROUTES.get('AUTHENTICATION_LOGIN')}/"
         login_headers = cls.headers
         login_headers["Content-Type"] = "application/x-www-form-urlencoded"
         payload = LoginRequestSerializer(data=data)
@@ -57,7 +57,7 @@ class AuthenticationService():
             Response: A dict representation of the APi'S JSON reply
             bool: Returns a false boolean if there is any error when making the request
         """
-        url = f"{APIS_HOST_ROUTES.get('authentication_logout')}/"
+        url = f"{APIS_HOST_ROUTES.get('AUTHENTICATION_LOGOUT')}/"
         try:
             payload = KeySerializer(data={"key": key})
             payload.is_valid(raise_exception=True)

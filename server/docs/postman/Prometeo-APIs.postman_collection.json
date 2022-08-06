@@ -1,0 +1,684 @@
+{
+	"info": {
+		"_postman_id": "24936fb0-e1c0-4846-9dba-2685dd596d7f",
+		"name": "Prometeo APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"ACCESSKEY\", jsonData.key);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "X-API-Key",
+										"value": "{{APIKEY}}",
+										"type": "default"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "provider",
+											"value": "test",
+											"type": "default"
+										},
+										{
+											"key": "username",
+											"value": "12345",
+											"type": "default"
+										},
+										{
+											"key": "password",
+											"value": "gfdsa",
+											"type": "default"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{APIDOMAIN}}/login/",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"login",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/logout/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"logout",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List of clients",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/client/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"client",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Selected one client by id",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/client/:clientId/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"client",
+										":clientId",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "clientId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Transactional Data",
+					"item": [
+						{
+							"name": "Get user accounts",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/account/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"account",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List movements",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/account/:accountNumber/movement/?key={{ACCESSKEY}}&accountNumber=12345678&currency=UYU&date_start=12/12/2022&date_end=12/12/2022",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"account",
+										":accountNumber",
+										"movement",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										},
+										{
+											"key": "accountNumber",
+											"value": "12345678"
+										},
+										{
+											"key": "currency",
+											"value": "UYU"
+										},
+										{
+											"key": "date_start",
+											"value": "12/12/2022"
+										},
+										{
+											"key": "date_end",
+											"value": "12/12/2022"
+										}
+									],
+									"variable": [
+										{
+											"key": "accountNumber",
+											"value": "12345678"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List all the user's credit cards",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/credit-card/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"credit-card",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List movements of a card",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/credit-card/:cardNumber/movements/?key={{ACCESSKEY}}&cardNumber=1791&currency=UYU&date_start=12/12/2022&date_end=12/12/2022",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"credit-card",
+										":cardNumber",
+										"movements",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										},
+										{
+											"key": "cardNumber",
+											"value": "1791"
+										},
+										{
+											"key": "currency",
+											"value": "UYU"
+										},
+										{
+											"key": "date_start",
+											"value": "12/12/2022"
+										},
+										{
+											"key": "date_end",
+											"value": "12/12/2022"
+										}
+									],
+									"variable": [
+										{
+											"key": "cardNumber",
+											"value": "1791"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Transfers",
+					"item": []
+				},
+				{
+					"name": "Meta",
+					"item": [
+						{
+							"name": "List providers",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/provider/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"provider",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Provider detail",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/provider/:providerCode/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"provider",
+										":providerCode",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									],
+									"variable": [
+										{
+											"key": "providerCode",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Provider branches list",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/provider/:providerCode/atms?key={{ACCESSKEY}}&zipcode=12000",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"provider",
+										":providerCode",
+										"atms"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										},
+										{
+											"key": "zipcode",
+											"value": "12000"
+										}
+									],
+									"variable": [
+										{
+											"key": "providerCode",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Provider's ATM list",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/provider/:providerCode/branches?key={{ACCESSKEY}}&zipcode=12000",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"provider",
+										":providerCode",
+										"branches"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										},
+										{
+											"key": "zipcode",
+											"value": "12000"
+										}
+									],
+									"variable": [
+										{
+											"key": "providerCode",
+											"value": "test"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get user information",
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": [
+										{
+											"key": "key",
+											"value": "X-API-Key",
+											"type": "string"
+										},
+										{
+											"key": "value",
+											"value": "{{APIKEY}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/info/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"info",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "APIDOMAIN",
+			"value": "https://banking.sandbox.prometeoapi.com",
+			"type": "default"
+		},
+		{
+			"key": "APIKEY",
+			"value": "OWXFSUJiu4DQ8C7uzvLfkBEuYJGBzXikXFoVgAOZ3Y9ocRTef5FRM57OMi7QOAuH",
+			"type": "default"
+		},
+		{
+			"key": "ACCESSKEY",
+			"value": "Updated-by-postman-tests-when-login",
+			"type": "default"
+		}
+	]
+}
