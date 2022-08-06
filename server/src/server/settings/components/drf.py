@@ -31,13 +31,17 @@ SPECTACULAR_SETTINGS = {
     "COMPONENT_SPLIT_REQUEST": True,
     "SERVE_PERMISSIONS": ["rest_framework.permissions.AllowAny"],
     "SCHEMA_PATH_PREFIX": "/api/v[0-9]",
+    'SERVE_AUTHENTICATION': None,
     "SERVE_INCLUDE_SCHEMA": False,
+    # "SWAGGER_UI_FAVICON_HREF": settings.STATIC_URL + "your_company_favicon.png", # default is swagger favicon
     # OTHER SETTINGS
     "SWAGGER_UI_SETTINGS": {
         "deepLinking": True,
         "filter": True,
         "displayRequestDuration": True,
         "syntaxHighlight.activate": True,
+        "persistAuthorization": False,
         "syntaxHighlight.theme": "monokai",
+        "displayOperationId": True,
     },
 }

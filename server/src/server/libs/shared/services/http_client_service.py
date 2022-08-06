@@ -81,8 +81,8 @@ class HttpClientService():
         request = getattr(cls.http, method)
         headers = headers or {}
 
-        if isinstance(data, ReturnDict):
-            data = json.dumps(data)
+        # if isinstance(data, ReturnDict):
+        #     data = json.dumps(data)
 
         response = requests.Response()
 

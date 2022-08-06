@@ -1,7 +1,9 @@
 from rest_framework import status
 
+from server.settings.components import config
+
 # =======================================================================
-# BEGIN CONSTANTS FOR HTTP CLIENT SERVICE
+# HTTP CLIENT SERVICE
 # =======================================================================
 
 # Number of retries for http requests
@@ -30,32 +32,27 @@ HTTP_REQUEST_TIMEOUT = 300
 HTTP_METHODS_ALLOWED = ['get', 'post', 'put', 'delete', 'patch']
 
 # =======================================================================
-# END CONSTANTS FOR HTTP CLIENT SERVICE
+# HTTP CLIENT SERVICE
 # =======================================================================
 
 # ======================================================================= 
-# BEGIN CONSTANTS FOR TRADER SERVICE
+# PROMETEO APIs
 # =======================================================================
 
-# Webhooks server Fully Qualified Domain Name (FQDN)
-WEBHOOKS_HOST = 'http://localhost:8000'
+# Prometeo server Fully Qualified Domain Name (FQDN)
+APIS_HOST = config("PROMETEO_BASE_URL")
+X_API_KEY = config("PROMETEO_API_KEY")
 
 # Separator for routes
 SEP = '/'
 
-# Routes to consult the trader
-WEBHOOKS_PROVIDER_ROUTES = {
+# Routes to consult the Prometeo
+APIS_HOST_ROUTES = {
     # HTTP METHOD [POST]
-    'WEBHOOKS': SEP.join([WEBHOOKS_HOST, 'api', 'v3', 'webhooks'])
+    'authentication_login': SEP.join([APIS_HOST, 'login']),
+    'authentication_logout': SEP.join([APIS_HOST, 'logout'])
 }
 
-# Types of events allowed by the webhooks
-EVENTS_ALLOWED = [
-    'feedback_account_event',
-    'feedback_transaction_event',
-]
-
-
 # =======================================================================
-# END CONSTANTS FOR TRADER SERVICE
+# PROMETEO APIs
 # =======================================================================

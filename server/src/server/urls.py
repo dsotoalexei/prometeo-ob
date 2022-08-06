@@ -23,12 +23,12 @@ from drf_spectacular.views import (
 )
 from health_check import urls as health_urls
 
-# from server.apps.authentication.api import urls as authentication_urls
-from server.apps.authentication.api.viewsets import EmptyPayloadAPI
+from server.apps.authentication.api import urls as authentication_urls
+# from server.apps.authentication.api.viewsets import EmptyPayloadAPI+
 
 api_v1_urlpatterns = [
-    # path("api/v1/", include(authentication_urls, namespace="v1-authentication")),
-    path("api/v1/authentication/login/", EmptyPayloadAPI.as_view()),
+    path("api/v1/", include(authentication_urls, namespace="v1-authentication")),
+    # path("api/v1/authentication/login/", EmptyPayloadAPI.as_view()),
 ]
 
 urlpatterns = [

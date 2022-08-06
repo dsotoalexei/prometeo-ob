@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-class AuthSerializer(serializers.Serializer):
 
-    username = serializers.CharField(read_only=True)
-    password = serializers.CharField(read_only=True)
-    provider = serializers.CharField(read_only=True)
+class LoginRequestSerializer(serializers.Serializer):
+    """Serializer for login request
+    """
+    provider = serializers.CharField()
+    username = serializers.CharField()
+    password = serializers.CharField()
+    type = serializers.CharField(required=False)
 
-
-class EmptyPayloadResponseSerializer(serializers.Serializer):
-    detail = serializers.CharField()
