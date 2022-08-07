@@ -1,0 +1,254 @@
+{
+	"info": {
+		"_postman_id": "33cb8fe0-faa9-4041-a86f-3e40c5cdd5d3",
+		"name": "Prometeo OB APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "v1",
+			"item": [
+				{
+					"name": "Authentication",
+					"item": [
+						{
+							"name": "Login",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = JSON.parse(responseBody);\r",
+											"pm.collectionVariables.set(\"ACCESSKEY\", jsonData.key);\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"provider\": \"test\",\r\n    \"username\": \"12345\",\r\n    \"password\": \"gfdsa\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{APIDOMAIN}}/api/v1/authentication/login/",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authentication",
+										"login",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Logout",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/api/v1/authentication/logout/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"authentication",
+										"logout",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Get user information",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/api/v1/user/me/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"me",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user accounts",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/api/v1/user/accounts/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"accounts",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get user credit cards",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/api/v1/user/credit-cards/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										"credit-cards",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Metas",
+					"item": [
+						{
+							"name": "List providers",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{APIDOMAIN}}/api/v1/metas/provider/?key={{ACCESSKEY}}",
+									"host": [
+										"{{APIDOMAIN}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"metas",
+										"provider",
+										""
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "{{ACCESSKEY}}"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "APIDOMAIN",
+			"value": "http://127.0.0.1:9099",
+			"type": "default"
+		},
+		{
+			"key": "ACCESSKEY",
+			"value": "Updated-by-postman-tests-when-login",
+			"type": "default"
+		}
+	]
+}
