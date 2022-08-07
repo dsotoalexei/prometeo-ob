@@ -43,7 +43,7 @@ class UserService():
 
 
     @classmethod
-    def account(cls, key):
+    def accounts(cls, key):
         """Allows to obtain the account of the logged in user
 
         Args:
@@ -53,7 +53,7 @@ class UserService():
             Response: A dict representation of the APi'S JSON reply
             bool: Returns a false boolean if there is any error when making the request
         """
-        url = f"{APIS_HOST_ROUTES.get('USER_ACCOUNT')}/"
+        url = f"{APIS_HOST_ROUTES.get('USER_ACCOUNTS')}/"
         try:
             payload = KeySerializer(data={"key": key})
             payload.is_valid(raise_exception=True)
@@ -76,7 +76,7 @@ class UserService():
             Response: A dict representation of the APi'S JSON reply
             bool: Returns a false boolean if there is any error when making the request
         """
-        url = f"{APIS_HOST_ROUTES.get('USER_CREDIT_CARD')}/"
+        url = f"{APIS_HOST_ROUTES.get('USER_CREDIT_CARDS')}/"
         try:
             payload = KeySerializer(data={"key": key})
             payload.is_valid(raise_exception=True)

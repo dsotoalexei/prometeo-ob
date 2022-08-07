@@ -16,11 +16,11 @@ from server.settings.components.database import DATABASES
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    config("DOMAIN_NAME"),
-    "localhost",
+    # config("DOMAIN_NAME"),
+    "*",
     # "0.0.0.0",  # noqa: S104
-    "127.0.0.1",
-    "[::1]",
+    # "127.0.0.1",
+    # "[::1]",
 ]
 
 

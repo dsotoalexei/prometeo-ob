@@ -1,3 +1,6 @@
+from django.conf import settings
+
+
 # -- REST FRAMEWORK CONFIGURATIONS --
 REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
@@ -33,7 +36,7 @@ SPECTACULAR_SETTINGS = {
     "SCHEMA_PATH_PREFIX": "/api/v[0-9]",
     'SERVE_AUTHENTICATION': None,
     "SERVE_INCLUDE_SCHEMA": False,
-    # "SWAGGER_UI_FAVICON_HREF": settings.STATIC_URL + "your_company_favicon.png", # default is swagger favicon
+    "SWAGGER_UI_FAVICON_HREF": "assets/images/favicon.ico",
     # OTHER SETTINGS
     "SWAGGER_UI_SETTINGS": {
         "deepLinking": True,

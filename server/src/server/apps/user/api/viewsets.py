@@ -9,6 +9,7 @@ from rest_framework.views import APIView
 from .serializers import (
     InfoResponseSerializer,
     AccountResponseSerializer,
+    CreditCardsResponseSerializer,
 )
 
 from .services import UserService
@@ -69,7 +70,7 @@ class UserAccountAPIView(APIView):
         ],
         examples=[
             OpenApiExample(
-                name="User account response successful",
+                name="User accounts response successful",
                 value={
                     "status": "success",
                     "accounts": [
@@ -101,7 +102,53 @@ class UserAccountAPIView(APIView):
         },
     )
     def get(self, request):
-        result = UserService.account(request.query_params.get('key'))
+        result = UserService.accounts(request.query_params.get('key'))
         response_serializer = AccountResponseSerializer(data=result.json())
+        response_serializer.is_valid(raise_exception=True)
+        return response.Response(data=response_serializer.data)
+
+
+@extend_schema(tags=["V1 | User"])
+class UserCreditCardsAPIView(APIView):
+    
+    @extend_schema(
+        summary="User credit cards",
+        description="Allows to obtain the credit cards of the logged in user",
+        parameters=[
+            OpenApiParameter(
+                name="key",
+                description="Authentication key that should be used to obtain information from Prometeo API",
+                required=True,
+            ),
+        ],
+        examples=[
+            OpenApiExample(
+                name="User credit cards response successful",
+                value={
+                    "status": "success",
+                    "credit_cards": [
+                        {
+                            "id": "12345",
+                            "name": "Test Credit Card",
+                            "number": "************1791",
+                            "close_date": "03/08/2022",
+                            "due_date": "14/08/2022",
+                            "balance_local": 12,
+                            "balance_dollar": 12
+                        }
+                    ]
+                },
+                request_only=False,  # signal that example only applies to requests
+                response_only=True,  # signal that example only applies to responses
+            ),
+        ],
+        request=None,
+        responses={
+            200: CreditCardsResponseSerializer
+        },
+    )
+    def get(self, request):
+        result = UserService.credit_cards(request.query_params.get('key'))
+        response_serializer = CreditCardsResponseSerializer(data=result.json())
         response_serializer.is_valid(raise_exception=True)
         return response.Response(data=response_serializer.data)

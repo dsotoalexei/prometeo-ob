@@ -32,3 +32,22 @@ class AccountResponseSerializer(serializers.Serializer):
     """
     status = serializers.CharField()
     accounts = AccountSerializer(many=True)
+
+
+class CreditCardSerializer(serializers.Serializer):
+    """Serializer for Credit Card
+    """
+    id = serializers.CharField()
+    name = serializers.CharField()
+    number = serializers.CharField()
+    close_date = serializers.CharField()
+    due_date = serializers.CharField()
+    balance_local = serializers.FloatField()
+    balance_dollar = serializers.FloatField()
+
+
+class CreditCardsResponseSerializer(serializers.Serializer):
+    """Serializer for User credit cards response
+    """
+    status = serializers.CharField()
+    credit_cards = CreditCardSerializer(many=True)

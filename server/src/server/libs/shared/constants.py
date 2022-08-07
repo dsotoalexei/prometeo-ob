@@ -51,10 +51,10 @@ APIS_HOST_ROUTES = {
     # HTTP METHOD [POST]
     'AUTHENTICATION_LOGIN': SEP.join([APIS_HOST, 'login']),
     'AUTHENTICATION_LOGOUT': SEP.join([APIS_HOST, 'logout']),
-    'METAS_PROVIDER': SEP.join([APIS_HOST, 'provider']),
+    'METAS_PROVIDERS': SEP.join([APIS_HOST, 'provider']),
     'USER_INFORMATION': SEP.join([APIS_HOST, 'info']),
-    'USER_ACCOUNT': SEP.join([APIS_HOST, 'account']),
-    'USER_CREDIT_CARD': SEP.join([APIS_HOST, 'credit-card']),
+    'USER_ACCOUNTS': SEP.join([APIS_HOST, 'account']),
+    'USER_CREDIT_CARDS': SEP.join([APIS_HOST, 'credit-card']),
 }
 
 # =======================================================================

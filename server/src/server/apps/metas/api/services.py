@@ -30,7 +30,7 @@ class MetasService():
             Response: A dict representation of the APi'S JSON reply
             bool: Returns a false boolean if there is any error when making the request
         """
-        url = f"{APIS_HOST_ROUTES.get('metas_provider')}/"
+        url = f"{APIS_HOST_ROUTES.get('METAS_PROVIDERS')}/"
         try:
             payload = KeySerializer(data={"key": key})
             payload.is_valid(raise_exception=True)

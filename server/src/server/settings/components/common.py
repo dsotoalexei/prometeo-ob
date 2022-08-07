@@ -56,6 +56,8 @@ MIDDLEWARE: Tuple[str, ...] = (
     # 'csp.middleware.CSPMiddleware',
     # Django:
     "django.middleware.security.SecurityMiddleware",
+    # Whitenoise:
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     # django-permissions-policy
     # 'django_permissions_policy.PermissionsPolicyMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -65,6 +67,8 @@ MIDDLEWARE: Tuple[str, ...] = (
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    # Whitenoise
+    # "whitenoise.runserver_nostatic",
     # Axes:
     # 'axes.middleware.AxesMiddleware',
     # Django HTTP Referrer Policy:
@@ -98,7 +102,11 @@ TIME_ZONE = "UTC"
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = "/static/"
-
+STATIC_ROOT = BASE_DIR.joinpath("static")
+STATICFILES_DIRS = (
+    BASE_DIR.joinpath("static"),
+)
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
