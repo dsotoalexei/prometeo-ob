@@ -5,11 +5,11 @@ Dado que la api requiere el uso de un API key que no debe ser expuesto al públi
 
 ## Tecnologias
 
-![](C:\Users\dsoto\Documents\Projects\prometeo-ob\mkdocs\docs\assets\images\tech\django-logo.jpg)
+![](./mkdocs/docs/assets/images/tech/django-logo.jpg)
 
 - **Django** es un marco web Python de alto nivel que fomenta un desarrollo rápido y un diseño limpio y pragmático. Creado por desarrolladores experimentados, se ocupa de gran parte de las molestias del desarrollo web, por lo que puede concentrarse en escribir su aplicación sin necesidad de reinventar la rueda. Es gratis y de código abierto.
 
-![](C:\Users\dsoto\Documents\Projects\prometeo-ob\mkdocs\docs\assets\images\tech\react-logo.png)
+![](./mkdocs/docs/assets/images/tech/react-logo.png)
 
 - **React** es una biblioteca de JavaScript para construir interfaces de usuario
 
