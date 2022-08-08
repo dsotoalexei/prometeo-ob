@@ -257,7 +257,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{APIDOMAIN}}/account/:accountNumber/movement/?key={{ACCESSKEY}}&accountNumber=12345678&currency=UYU&date_start=12/12/2022&date_end=12/12/2022",
+									"raw": "{{APIDOMAIN}}/account/:accountNumber/movement/?key={{ACCESSKEY}}&currency=UYU&date_start=12/12/2022&date_end=12/12/2022",
 									"host": [
 										"{{APIDOMAIN}}"
 									],
@@ -271,10 +271,6 @@
 										{
 											"key": "key",
 											"value": "{{ACCESSKEY}}"
-										},
-										{
-											"key": "accountNumber",
-											"value": "12345678"
 										},
 										{
 											"key": "currency",
@@ -394,7 +390,7 @@
 									"variable": [
 										{
 											"key": "cardNumber",
-											"value": "1791"
+											"value": "************1791"
 										}
 									]
 								}
@@ -431,19 +427,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{APIDOMAIN}}/provider/?key={{ACCESSKEY}}",
+									"raw": "{{APIDOMAIN}}/provider/",
 									"host": [
 										"{{APIDOMAIN}}"
 									],
 									"path": [
 										"provider",
 										""
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{ACCESSKEY}}"
-										}
 									]
 								}
 							},
@@ -470,7 +460,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{APIDOMAIN}}/provider/:providerCode/?key={{ACCESSKEY}}",
+									"raw": "{{APIDOMAIN}}/provider/:providerCode/",
 									"host": [
 										"{{APIDOMAIN}}"
 									],
@@ -478,12 +468,6 @@
 										"provider",
 										":providerCode",
 										""
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{ACCESSKEY}}"
-										}
 									],
 									"variable": [
 										{

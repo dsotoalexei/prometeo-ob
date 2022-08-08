@@ -104,11 +104,6 @@ function CreditCard({
           </div>
         </div>
       </div>
-      <div className="p-8 flex justify-center">
-        <button className="inset-y-1 p-3 rounded-full bg-gradient-to-r from-red-600 via-red-400 to-red-600 font-bold text-white">
-          Ver movimientos
-        </button>
-      </div>
     </div>
   );
 }

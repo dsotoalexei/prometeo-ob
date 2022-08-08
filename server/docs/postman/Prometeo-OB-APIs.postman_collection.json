@@ -193,7 +193,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{APIDOMAIN}}/api/v1/metas/provider/?key={{ACCESSKEY}}",
+									"raw": "{{APIDOMAIN}}/api/v1/metas/provider/",
 									"host": [
 										"{{APIDOMAIN}}"
 									],
@@ -203,12 +203,6 @@
 										"metas",
 										"provider",
 										""
-									],
-									"query": [
-										{
-											"key": "key",
-											"value": "{{ACCESSKEY}}"
-										}
 									]
 								}
 							},

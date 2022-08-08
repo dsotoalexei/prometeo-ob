@@ -21,12 +21,6 @@ function AccountCard({ name, number, currency, balance }: IAccountCardProps) {
             {number}
           </p>
         </div>
-
-        <div className="p-8 flex justify-center">
-          <button className="inset-y-1 p-3 rounded-full bg-gradient-to-r from-red-600 via-red-400 to-red-600 text-white font-semibold">
-            Ver movimientos
-          </button>
-        </div>
       </article>
     </div>
   );

@@ -1,62 +1,98 @@
-# prometeo-ob
+# Prometeo OB
 
-**First we need to install the react-redux package**
+Desarrollar una app web que permita iniciar sesión con la api de prometeo, donde el usuario pueda elegir su banco e ingresar sus credenciales, y luego muestre la información del mismo, obtenida también con prometeo.
+Dado que la api requiere el uso de un API key que no debe ser expuesto al público, todas las llamadas a la api deberán hacerse desde el backend.
 
-```bash
-$> npm install -E react-redux
-$> npm install -DE @types/react-redux
-```
+## Tecnologias
 
-**Then, install @reduxjs/toolkit package**
+![](C:\Users\dsoto\Documents\Projects\prometeo-ob\mkdocs\docs\assets\images\tech\django-logo.jpg)
 
-```bash
-$> npm install -E @reduxjs/toolkit
-```
+- **Django** es un marco web Python de alto nivel que fomenta un desarrollo rápido y un diseño limpio y pragmático. Creado por desarrolladores experimentados, se ocupa de gran parte de las molestias del desarrollo web, por lo que puede concentrarse en escribir su aplicación sin necesidad de reinventar la rueda. Es gratis y de código abierto.
 
-**Install redux-logger package**
+![](C:\Users\dsoto\Documents\Projects\prometeo-ob\mkdocs\docs\assets\images\tech\react-logo.png)
 
-```bash
-$> npm install -DE redux-logger @types/redux-logger
-```
+- **React** es una biblioteca de JavaScript para construir interfaces de usuario
 
-Install [Material UI](https://mui.com/)
+## Estructura del proyecto
 
 ```bash
-$> npm install -E @mui/material @mui/styled-engine-sc @mui/icons-material
-$> npm install -E react-helmet-async react-i18next styled-components
-$> npm install -DE @types/styled-components
+prometeo_ob
+|-- mkdocs
+|-- cra-client
+|-- server
 ```
+
+| Nombre del directorio | Descripción                                      |
+| --------------------- | ------------------------------------------------ |
+| mkdocs                | Documentación del proyecto generada con `mkdocs` |
+| cra-client            | Aplicacion creada utilizando React               |
+| server                | Aplicacion creada utilizando Django              |
+
+## Requerimientos
+
+> **APLICACION `SERVER`**
+
+- Python V3.9
+
+- Django V3.2
+
+> **APLICACION `CRA-CLIENT`**
+
+- NodeJS V16.15.1
+
+- NPM V8.11.0
+
+## Instalación
+
+> **APLICACION `SERVER`**
+
+1. Posicionarse dentro del directorio `server` y luego ejecutar los comandos siguientes:
 
 ```bash
-$> npx create-react-app my-app --template typescript
-$> npx sb init
+# Generar un entorno virtual
 
-$> npx create-nx-workspace@latest client
-$> npx nx g @nrwl/react:lib redux --directory=web --appProject=web
-$> npm install -DE @nrwl/storybook
-$> npx nx g @nrwl/react:storybook-configuration web-ui
 
-// Generate with stories
-$> npx nx g @nrwl/react:storybook-configuration web-ui --generateStories
+# Instalar las dependencias
 
-// Generate with stories and cypress
-$> npx nx g @nrwl/react:storybook-configuration web-ui --generateStories --configureCypress
 
-// Run web
-$> npx nx run web:serve
-
-// Run storybook
-$> npx nx run web-ui:storybook
-
-// Run e2e test
-$> npx nx run web-e2e:e2e --watch
-
-// Run jest test
-$> npx nx run web:test
-
-// Run lint
-$> npx nx run web:lint
-
-// Build for production
-$> npx nx run web:build --configuration=production
+# Posicionarse en src y ejecutar
+$> python manage.py runserver 9099
 ```
+
+> **APLICACION `CRA-CLIENT`**
+
+1. Posicionarse dentro del directorio `cra-client` y luego ejecutar los comandos siguientes:
+
+```bash
+# Instalar las dependencias
+$> npm install
+
+# Iniciar la aplicacion
+$> npm start
+```
+
+## Pantallas
+
+> **APLICACION `SERVER`**
+
+- **Documentacion del Api con Swagger**
+
+![](./mkdocs/docs/assets/images/server/swagger.png)
+
+> **APLICACION `CRA-CLIENT`**
+
+- **Inicio de sesion**
+
+![](./mkdocs/docs/assets/images/cra-client/login-page.png)
+
+- **Tablero**
+
+![](./mkdocs/docs/assets/images/cra-client/dashboard-page.png)
+
+- **Cuentas**
+
+![](./mkdocs/docs/assets/images/cra-client/account-page.png)
+
+- **Tarjetas**
+
+![](./mkdocs/docs/assets/images/cra-client/card-page.png)
