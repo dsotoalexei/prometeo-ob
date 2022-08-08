@@ -1,47 +1,53 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // =============================================================
-// TASKS SLICE
+// USERS SLICE
 // =============================================================
 import { createSlice } from '@reduxjs/toolkit';
+import { API_ROUTES } from '../../../domains/constants';
+import { ICardModel } from '../../../domains/models';
 import { RootState } from '../../setup';
 
 // =============================================================
 // MODELS STATE
 // =============================================================
-interface ITasksState {
-  loading: boolean;
-  hasErrors: boolean;
-  tasks: any[];
+interface ICardsState {
+  cards: ICardModel[];
+  isFetching: boolean;
+  isSuccess: boolean;
+  isError: boolean;
+  errorMessage: string;
 }
 
 // =============================================================
 // INITIAL STATE
 // =============================================================
-const initialState: ITasksState = {
-  loading: false,
-  hasErrors: false,
-  tasks: [],
+const initialState: ICardsState = {
+  cards: [],
+  isFetching: false,
+  isSuccess: false,
+  isError: false,
+  errorMessage: '',
 };
 // =============================================================
 
 // =============================================================
 // SLICE
 // =============================================================
-export const tasksSlice = createSlice({
-  name: 'tasks',
+export const cardsSlice = createSlice({
+  name: 'cards',
   initialState,
   reducers: {
-    getTasks: (state) => {
-      state.loading = true;
+    getCards: (state) => {
+      state.isFetching = true;
     },
-    getTasksSuccess: (state, { payload }) => {
-      state.tasks = payload;
-      state.loading = false;
-      state.hasErrors = false;
+    getCardsSuccess: (state, { payload }) => {
+      state.cards = payload;
+      state.isFetching = false;
+      state.isError = false;
     },
-    getTasksFailure: (state) => {
-      state.loading = false;
-      state.hasErrors = true;
+    getCardsFailure: (state) => {
+      state.isFetching = false;
+      state.isError = true;
     },
   },
   extraReducers: {},
@@ -51,35 +57,34 @@ export const tasksSlice = createSlice({
 // =============================================================
 // ACTIONS
 // =============================================================
-export const { getTasks, getTasksSuccess, getTasksFailure } =
-  tasksSlice.actions;
+export const { getCards, getCardsSuccess, getCardsFailure } =
+  cardsSlice.actions;
 // =============================================================
 
 // =============================================================
 // REDUCERS
 // =============================================================
-export const { reducer: tasksReducer } = tasksSlice;
+export const { reducer: cardsReducer } = cardsSlice;
 // =============================================================
 
 // =============================================================
 // SELECTORS
 // =============================================================
-export const tasksSelector = (state: RootState) => state.tasks;
+export const cardsSelector = (state: RootState) => state.cards;
 // =============================================================
 
-export function fetchTasks(userId: string) {
+export function fetchCards() {
   return async (dispatch: any) => {
-    dispatch(getTasks());
+    dispatch(getCards());
 
     try {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/todos?userId=${userId}`
-      );
+      const accessKey = localStorage.getItem('accessKey');
+      const response = await fetch(`${API_ROUTES.USER_CARDS}?key=${accessKey}`);
       const data = await response.json();
 
-      dispatch(getTasksSuccess(data));
+      dispatch(getCardsSuccess(data.credit_cards));
     } catch (error) {
-      dispatch(getTasksFailure());
+      dispatch(getCardsFailure());
     }
   };
 }

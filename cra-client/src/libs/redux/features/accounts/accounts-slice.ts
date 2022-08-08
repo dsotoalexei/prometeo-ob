@@ -3,45 +3,51 @@
 // USERS SLICE
 // =============================================================
 import { createSlice } from '@reduxjs/toolkit';
+import { API_ROUTES } from '../../../domains/constants';
+import { IAccountModel } from '../../../domains/models';
 import { RootState } from '../../setup';
 
 // =============================================================
 // MODELS STATE
 // =============================================================
-interface IUsersState {
-  loading: boolean;
-  hasErrors: boolean;
-  users: any[];
+interface IAccountsState {
+  accounts: IAccountModel[];
+  isFetching: boolean;
+  isSuccess: boolean;
+  isError: boolean;
+  errorMessage: string;
 }
 
 // =============================================================
 // INITIAL STATE
 // =============================================================
-const initialState: IUsersState = {
-  loading: false,
-  hasErrors: false,
-  users: [],
+const initialState: IAccountsState = {
+  isFetching: false,
+  isSuccess: false,
+  isError: false,
+  errorMessage: '',
+  accounts: [],
 };
 // =============================================================
 
 // =============================================================
 // SLICE
 // =============================================================
-export const usersSlice = createSlice({
-  name: 'users',
+export const accountsSlice = createSlice({
+  name: 'accounts',
   initialState,
   reducers: {
-    getUsers: (state) => {
-      state.loading = true;
+    getAccounts: (state) => {
+      state.isFetching = true;
     },
-    getUsersSuccess: (state, { payload }) => {
-      state.users = payload;
-      state.loading = false;
-      state.hasErrors = false;
+    getAccountsSuccess: (state, { payload }) => {
+      state.accounts = payload;
+      state.isFetching = false;
+      state.isError = false;
     },
-    getUsersFailure: (state) => {
-      state.loading = false;
-      state.hasErrors = true;
+    getAccountsFailure: (state) => {
+      state.isFetching = false;
+      state.isError = true;
     },
   },
   extraReducers: {},
@@ -51,35 +57,36 @@ export const usersSlice = createSlice({
 // =============================================================
 // ACTIONS
 // =============================================================
-export const { getUsers, getUsersSuccess, getUsersFailure } =
-  usersSlice.actions;
+export const { getAccounts, getAccountsSuccess, getAccountsFailure } =
+  accountsSlice.actions;
 // =============================================================
 
 // =============================================================
 // REDUCERS
 // =============================================================
-export const { reducer: usersReducer } = usersSlice;
+export const { reducer: accountsReducer } = accountsSlice;
 // =============================================================
 
 // =============================================================
 // SELECTORS
 // =============================================================
-export const usersSelector = (state: RootState) => state.users;
+export const accountsSelector = (state: RootState) => state.accounts;
 // =============================================================
 
-export function fetchUsers() {
+export function fetchAccounts() {
   return async (dispatch: any) => {
-    dispatch(getUsers());
+    dispatch(getAccounts());
 
     try {
+      const accessKey = localStorage.getItem('accessKey');
       const response = await fetch(
-        'https://jsonplaceholder.typicode.com/users'
+        `${API_ROUTES.USER_ACCOUNTS}?key=${accessKey}`
       );
       const data = await response.json();
 
-      dispatch(getUsersSuccess(data));
+      dispatch(getAccountsSuccess(data.accounts));
     } catch (error) {
-      dispatch(getUsersFailure());
+      dispatch(getAccountsFailure());
     }
   };
 }

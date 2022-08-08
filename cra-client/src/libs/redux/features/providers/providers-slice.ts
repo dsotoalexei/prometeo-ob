@@ -3,45 +3,51 @@
 // TASKS SLICE
 // =============================================================
 import { createSlice } from '@reduxjs/toolkit';
+import { API_ROUTES } from '../../../domains/constants';
+import { IProviderModel } from '../../../domains/models';
 import { RootState } from '../../setup';
 
 // =============================================================
 // MODELS STATE
 // =============================================================
-interface ITasksState {
-  loading: boolean;
-  hasErrors: boolean;
-  tasks: any[];
+interface IProvidersState {
+  providers: IProviderModel[];
+  isFetching: boolean;
+  isSuccess: boolean;
+  isError: boolean;
+  errorMessage: string;
 }
 
 // =============================================================
 // INITIAL STATE
 // =============================================================
-const initialState: ITasksState = {
-  loading: false,
-  hasErrors: false,
-  tasks: [],
+const initialState: IProvidersState = {
+  providers: [],
+  isFetching: false,
+  isSuccess: false,
+  isError: false,
+  errorMessage: '',
 };
 // =============================================================
 
 // =============================================================
 // SLICE
 // =============================================================
-export const tasksSlice = createSlice({
-  name: 'tasks',
+export const providersSlice = createSlice({
+  name: 'providers',
   initialState,
   reducers: {
-    getTasks: (state) => {
-      state.loading = true;
+    getProviders: (state) => {
+      state.isFetching = true;
     },
-    getTasksSuccess: (state, { payload }) => {
-      state.tasks = payload;
-      state.loading = false;
-      state.hasErrors = false;
+    getProvidersSuccess: (state, { payload }) => {
+      state.providers = payload;
+      state.isFetching = false;
+      state.isError = false;
     },
-    getTasksFailure: (state) => {
-      state.loading = false;
-      state.hasErrors = true;
+    getProvidersFailure: (state) => {
+      state.isFetching = false;
+      state.isError = true;
     },
   },
   extraReducers: {},
@@ -51,41 +57,37 @@ export const tasksSlice = createSlice({
 // =============================================================
 // ACTIONS
 // =============================================================
-export const { getTasks, getTasksSuccess, getTasksFailure } =
-  tasksSlice.actions;
+export const { getProviders, getProvidersSuccess, getProvidersFailure } =
+  providersSlice.actions;
 // =============================================================
 
 // =============================================================
 // REDUCERS
 // =============================================================
-export const { reducer: tasksReducer } = tasksSlice;
+export const { reducer: providersReducer } = providersSlice;
 // =============================================================
 
 // =============================================================
 // SELECTORS
 // =============================================================
-export const tasksSelector = (state: RootState) => state.tasks;
+export const providersSelector = (state: RootState) => state.providers;
 // =============================================================
-
 
 // =============================================================
 // SIDE EFFECTS
 // =============================================================
-export function fetchTasks(userId: string) {
-    return async (dispatch: any) => {
-      dispatch(getTasks());
-  
-      try {
-        const response = await fetch(
-          `https://jsonplaceholder.typicode.com/todos?userId=${userId}`
-        );
-        const data = await response.json();
-  
-        dispatch(getTasksSuccess(data));
-      } catch (error) {
-        dispatch(getTasksFailure());
-      }
-    };
+export function fetchProviders() {
+  return async (dispatch: any) => {
+    dispatch(getProviders());
+
+    try {
+      const response = await fetch(`${API_ROUTES.META_PROVIDERS}`);
+      const data = await response.json();
+
+      dispatch(getProvidersSuccess(data.providers));
+    } catch (error) {
+      dispatch(getProvidersFailure());
+    }
+  };
 }
 // =============================================================
-

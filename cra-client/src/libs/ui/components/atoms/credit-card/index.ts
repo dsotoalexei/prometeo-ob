@@ -1,6 +1,5 @@
 // ============================================
-// ROUTES
+// CREDIT CARD
 // ============================================
-export * from './app-routes';
-export * from './protected-route';
+export * from './credit-card';
 // ============================================

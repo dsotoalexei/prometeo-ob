@@ -1,6 +1,5 @@
 // ============================================
-// ROUTES
+// MOVEMENT ROW
 // ============================================
-export * from './app-routes';
-export * from './protected-route';
+export * from './movement-row';
 // ============================================

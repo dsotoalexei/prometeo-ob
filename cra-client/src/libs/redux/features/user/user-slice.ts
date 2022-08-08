@@ -3,24 +3,34 @@
 // USER SLICE
 // =============================================================
 import { createSlice } from '@reduxjs/toolkit';
+import { API_ROUTES } from '../../../domains/constants';
+import { IUserModel } from '../../../domains/models/user.model';
 import { RootState } from '../../setup';
 
 // =============================================================
 // MODELS STATE
 // =============================================================
 interface IUserState {
-  loading: boolean;
-  hasErrors: boolean;
-  user: any;
+  user: IUserModel;
+  isFetching: boolean;
+  isSuccess: boolean;
+  isError: boolean;
+  errorMessage: string;
 }
 
 // =============================================================
 // INITIAL STATE
 // =============================================================
 const initialState: IUserState = {
-  loading: false,
-  hasErrors: false,
-  user: {},
+  isFetching: false,
+  isSuccess: false,
+  isError: false,
+  errorMessage: '',
+  user: {
+    name: '',
+    document: '',
+    email: '',
+  },
 };
 // =============================================================
 
@@ -32,16 +42,16 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     getUser: (state) => {
-      state.loading = true;
+      state.isFetching = true;
     },
     getUserSuccess: (state, { payload }) => {
       state.user = payload;
-      state.loading = false;
-      state.hasErrors = false;
+      state.isFetching = false;
+      state.isError = false;
     },
     getUserFailure: (state) => {
-      state.loading = false;
-      state.hasErrors = true;
+      state.isFetching = false;
+      state.isError = true;
     },
   },
   extraReducers: {},
@@ -66,17 +76,16 @@ export const { reducer: userReducer } = userSlice;
 export const userSelector = (state: RootState) => state.user;
 // =============================================================
 
-export function fetchUser(id: string) {
+export function fetchUser() {
   return async (dispatch: any) => {
     dispatch(getUser());
 
     try {
-      const response = await fetch(
-        `https://jsonplaceholder.typicode.com/users/${id}`
-      );
+      const accessKey = localStorage.getItem('accessKey');
+      const response = await fetch(`${API_ROUTES.USER_ME}?key=${accessKey}`);
       const data = await response.json();
 
-      dispatch(getUserSuccess(data));
+      dispatch(getUserSuccess(data.info));
     } catch (error) {
       dispatch(getUserFailure());
     }
