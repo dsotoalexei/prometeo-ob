@@ -20,7 +20,7 @@ class MetasService():
     }
 
     @classmethod
-    def provider(cls, key):
+    def provider(cls):
         """Get a list of providers from Prometeo API
 
         Args:
@@ -32,9 +32,7 @@ class MetasService():
         """
         url = f"{APIS_HOST_ROUTES.get('METAS_PROVIDERS')}/"
         try:
-            payload = KeySerializer(data={"key": key})
-            payload.is_valid(raise_exception=True)
-            response = HttpClientService.make_request(url=url, headers=cls.headers, verify=True, params=payload.data)
+            response = HttpClientService.make_request(url=url, headers=cls.headers, verify=True)
             return response
         except ServiceNetworkException:
             LOGGER.exception(f"The remote server {url} returned an error")

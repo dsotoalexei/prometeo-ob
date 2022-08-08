@@ -1,21 +1,21 @@
-from dj_database_url import parse as db_url
-from server.settings.components import config
+# from dj_database_url import parse as db_url
+# from server.settings.components import config
 
 # =======================================================================
 # -- Database -- #
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 # =======================================================================
 
-DATABASE_URL = config("DATABASE_URL", None)
-if not DATABASE_URL:
-    raise ValueError('You must have "DATABASE_URL" variable')
+# DATABASE_URL = config("DATABASE_URL", None)
+# if not DATABASE_URL:
+#     raise ValueError('You must have "DATABASE_URL" variable')
 
-default_db_config = config('DATABASE_URL', default='sqlite:///:memory:', cast=db_url,)
-default_db_config['CONN_MAX_AGE'] = 600
+# default_db_config = config('DATABASE_URL', default='sqlite:///:memory:', cast=db_url,)
+# default_db_config['CONN_MAX_AGE'] = 600
 
-DATABASES: object = {
-    'default': default_db_config,
-}
+# DATABASES: object = {
+#     'default': default_db_config,
+# }
 # =======================================================================
 
 # Database
@@ -36,6 +36,6 @@ DATABASES: object = {
 #     },
 # }
 
-# DATABASES: object = {
-#     "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}
-# }
+DATABASES: object = {
+    "default": {"ENGINE": "django.db.backends.sqlite3", "NAME": ":memory:"}
+}

@@ -17,13 +17,6 @@ class ProviderAPIView(APIView):
     @extend_schema(
         summary="List of providers",
         description="List all available data providers in Prometheus",
-        parameters=[
-            OpenApiParameter(
-                name="key",
-                description="For match with investment",
-                required=True,
-            ),
-        ],
         examples=[
             OpenApiExample(
                 name="Providers response successful",
@@ -51,8 +44,8 @@ class ProviderAPIView(APIView):
             200: ProviderResponseSerializer
         },
     )
-    def get(self, request):
-        result = MetasService.provider(request.query_params.get('key'))
+    def get(self, _):
+        result = MetasService.provider()
         response_serializer = ProviderResponseSerializer(data=result.json())
         response_serializer.is_valid(raise_exception=True)
         return response.Response(data=response_serializer.data)
