@@ -1,17 +1,15 @@
 import { useState } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Transition } from '@headlessui/react';
 import { fetchLogout, useAppDispatch } from '../../../../redux';
 
 function NavBar() {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const onLogOut = () => {
     localStorage.removeItem('accessKey');
     dispatch(fetchLogout());
-    navigate('/login', { replace: true });
   };
 
   return (

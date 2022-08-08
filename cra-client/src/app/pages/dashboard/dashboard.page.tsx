@@ -14,6 +14,7 @@ const DashboardPage = () => {
 
   useEffect(() => {
     dispatch(fetchUser());
+    alert('adfs');
   }, [dispatch]);
 
   if (isFetching) {
