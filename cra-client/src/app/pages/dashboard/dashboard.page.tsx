@@ -30,15 +30,15 @@ const DashboardPage = () => {
           <div className="pt-12 pb-8">
             <Link
               to="/accounts"
-              className="bg-blue-700 hover:bg-blue-900 text-white font-bold py-2 px-4 rounded-full"
+              className="inset-y-1 p-3 rounded-full bg-gradient-to-r from-red-600 via-red-400 to-red-600 text-white font-semibold"
             >
               Ver cuentas
             </Link>
             <Link
               to="/credit-cards"
-              className="bg-blue-700 hover:bg-blue-900 text-white font-bold ml-4 py-2 px-4 rounded-full"
+              className="inset-y-1 p-3 rounded-full bg-gradient-to-r from-red-600 via-red-400 to-red-600 text-white font-semibold ml-2"
             >
-              Ver tarjetas de credito
+              Ver tarjetas de crédito
             </Link>
           </div>
 

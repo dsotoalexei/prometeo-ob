@@ -1,44 +1,30 @@
-function AccountCard() {
+import { IAccountCardProps } from './account-card.types';
+
+function AccountCard({ name, number, currency, balance }: IAccountCardProps) {
   return (
     <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
       <article className="overflow-hidden rounded-lg shadow-lg">
-        <a href="#">
+        <h2 className="text-black text-center dark:text-white  text-3xl font-bold">
+          {currency} {balance}
+        </h2>
+        <div className="flex items-center justify-between leading-tight p-2 md:p-4">
+          <h1 className="text-lg">{name}</h1>
+          <p className="text-grey-darker text-sm">{number}</p>
+        </div>
+
+        <div className="flex items-center justify-between leading-none p-2 md:p-4">
           <img
-            alt="Placeholder"
-            className="block h-auto w-full"
+            alt="Account information"
+            className="block rounded-full h-20 w-20"
             src="assets/images/account.svg"
           />
-        </a>
-
-        <header className="flex items-center justify-between leading-tight p-2 md:p-4">
-          <h1 className="text-lg">
-            <a className="no-underline hover:underline text-black" href="#">
-              Article Title
-            </a>
-          </h1>
-          <p className="text-grey-darker text-sm">11/1/19</p>
-        </header>
-
-        <footer className="flex items-center justify-between leading-none p-2 md:p-4">
-          <a
-            className="flex items-center no-underline hover:underline text-black"
-            href="#"
-          >
-            <img
-              alt="Placeholder"
-              className="block rounded-full"
-              src="https://picsum.photos/32/32/?random"
-            />
-            <p className="ml-2 text-sm">Author Name</p>
-          </a>
-          <a
-            className="no-underline text-grey-darker hover:text-red-dark"
-            href="#"
-          >
-            <span className="hidden">Like</span>
-            <i className="fa fa-heart"></i>
-          </a>
-        </footer>
+          <p className="ml-2 text-sm">{currency}</p>
+        </div>
+        <div className="p-8 flex justify-center">
+          <button className="inset-y-1 p-3 rounded-full bg-gradient-to-r from-red-600 via-red-400 to-red-600 text-white font-semibold">
+            Ver movimientos
+          </button>
+        </div>
       </article>
     </div>
   );

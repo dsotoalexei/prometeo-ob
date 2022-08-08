@@ -28,7 +28,13 @@ function AccountsPage() {
     <div className="container my-12 mx-auto px-4 md:px-12">
       <div className="flex flex-wrap -mx-1 lg:-mx-4">
         {accounts.map((account: IAccountModel) => (
-          <AccountCard key={account?.id} />
+          <AccountCard
+            key={account?.id}
+            name={account?.name}
+            number={account?.number}
+            currency={account?.currency}
+            balance={account?.balance}
+          />
         ))}
       </div>
     </div>

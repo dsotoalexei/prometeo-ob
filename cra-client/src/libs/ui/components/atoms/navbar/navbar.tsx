@@ -22,25 +22,40 @@ function NavBar() {
                 <div className="ml-10 flex items-baseline space-x-4">
                   <NavLink
                     to="/"
-                    className=" hover:bg-red-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'hover:bg-red-900 text-white px-3 py-2 rounded-md text-sm font-medium'
+                        : 'text-gray-300 hover:bg-red-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
+                    }
                   >
                     Tablero
                   </NavLink>
 
                   <NavLink
                     to="/accounts"
-                    className="text-gray-300 hover:bg-red-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'hover:bg-red-900 text-white px-3 py-2 rounded-md text-sm font-medium'
+                        : 'text-gray-300 hover:bg-red-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
+                    }
                   >
                     Cuentas
                   </NavLink>
 
                   <NavLink
                     to="/credit-cards"
-                    className="text-gray-300 hover:bg-red-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    className={({ isActive }) =>
+                      isActive
+                        ? 'hover:bg-red-900 text-white px-3 py-2 rounded-md text-sm font-medium'
+                        : 'text-gray-300 hover:bg-red-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium'
+                    }
                   >
                     Tarjetas de crédito
                   </NavLink>
-                  <button className="text-gray-300 hover:bg-red-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+                  <button
+                    type="button"
+                    className="text-gray-300 hover:bg-red-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  >
                     Cerrar sesion
                   </button>
                 </div>
@@ -107,21 +122,33 @@ function NavBar() {
               <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <NavLink
                   to="/"
-                  className="hover:bg-red-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'hover:bg-red-900 text-white block px-3 py-2 rounded-md text-base font-medium'
+                      : 'text-gray-300 hover:bg-red-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
+                  }
                 >
                   Tablero
                 </NavLink>
 
                 <NavLink
                   to="/accounts"
-                  className="text-gray-300 hover:bg-red-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'hover:bg-red-900 text-white block px-3 py-2 rounded-md text-base font-medium'
+                      : 'text-gray-300 hover:bg-red-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
+                  }
                 >
                   Cuentas
                 </NavLink>
 
                 <NavLink
                   to="/credit-cards"
-                  className="text-gray-300 hover:bg-red-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'hover:bg-red-900 text-white block px-3 py-2 rounded-md text-base font-medium'
+                      : 'text-gray-300 hover:bg-red-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium'
+                  }
                 >
                   Tarjetas de crédito
                 </NavLink>
