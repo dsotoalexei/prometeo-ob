@@ -12,8 +12,6 @@ import {
   providersSelector,
   useAppDispatch,
   useAppSelector,
-  authSelector,
-  fetchUser,
 } from '../../../libs/redux';
 import { TLoginFormData } from '../../../libs/domains/models/login-form-data.model';
 
@@ -25,14 +23,13 @@ const loginSchema = yup.object().shape({
 
 function LoginPage() {
   const dispatch = useAppDispatch();
-  let navigate = useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid, isSubmitting },
     reset,
   } = useForm({
-    reValidateMode: 'onChange',
     defaultValues: {
       username: '12345',
       password: 'gfdsa',
@@ -42,21 +39,14 @@ function LoginPage() {
     resolver: yupResolver(loginSchema),
   });
   const { providers, isFetching, isError } = useAppSelector(providersSelector);
-  const { isAuthenticated } = useAppSelector(authSelector);
 
   useEffect(() => {
     dispatch(fetchProviders());
   }, [dispatch]);
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(fetchUser());
-      navigate('/', { replace: true });
-    }
-  }, [dispatch, isAuthenticated, navigate]);
-
   const onSubmit = (data: TLoginFormData): void => {
     dispatch(fetchLogin(data));
+    setTimeout(() => navigate('/', { replace: true }), 2000);
     reset();
   };
 
@@ -132,6 +122,7 @@ function LoginPage() {
           <div className="flex items-center justify-center mt-4">
             <button
               type="submit"
+              disabled={isSubmitting && !isDirty && !isValid}
               className="inline-block px-6 py-2.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition duration-150 ease-in-out"
             >
               Entrar

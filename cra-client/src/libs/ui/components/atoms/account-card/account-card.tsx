@@ -8,18 +8,20 @@ function AccountCard({ name, number, currency, balance }: IAccountCardProps) {
           {currency} {balance}
         </h2>
         <div className="flex items-center justify-between leading-tight p-2 md:p-4">
-          <h1 className="text-lg">{name}</h1>
-          <p className="text-grey-darker text-sm">{number}</p>
+          <h3 className="text-lg">
+            <span className="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded-full">
+              Nombre:
+            </span>{' '}
+            {name}
+          </h3>
+          <p className="text-grey-darker text-sm">
+            <span className="text-xs inline-block py-1 px-2.5 leading-none text-center whitespace-nowrap align-baseline font-bold bg-red-600 text-white rounded-full">
+              Cuenta:
+            </span>{' '}
+            {number}
+          </p>
         </div>
 
-        <div className="flex items-center justify-between leading-none p-2 md:p-4">
-          <img
-            alt="Account information"
-            className="block rounded-full h-20 w-20"
-            src="assets/images/account.svg"
-          />
-          <p className="ml-2 text-sm">{currency}</p>
-        </div>
         <div className="p-8 flex justify-center">
           <button className="inset-y-1 p-3 rounded-full bg-gradient-to-r from-red-600 via-red-400 to-red-600 text-white font-semibold">
             Ver movimientos

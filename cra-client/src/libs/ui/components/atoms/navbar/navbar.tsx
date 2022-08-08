@@ -1,9 +1,18 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { Transition } from '@headlessui/react';
+import { fetchLogout, useAppDispatch } from '../../../../redux';
 
 function NavBar() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const onLogOut = () => {
+    localStorage.removeItem('accessKey');
+    dispatch(fetchLogout());
+    navigate('/login', { replace: true });
+  };
 
   return (
     <div>
@@ -12,11 +21,13 @@ function NavBar() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img
-                  className="h-8 w-250"
-                  src="assets/images/logo/logo.png"
-                  alt="Prometeo"
-                />
+                <Link to="/">
+                  <img
+                    className="h-8 w-250"
+                    src="assets/images/logo/logo.png"
+                    alt="Prometeo"
+                  />
+                </Link>
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
@@ -54,6 +65,7 @@ function NavBar() {
                   </NavLink>
                   <button
                     type="button"
+                    onClick={onLogOut}
                     className="text-gray-300 hover:bg-red-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                   >
                     Cerrar sesion
@@ -117,9 +129,9 @@ function NavBar() {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          {(ref) => (
+          {() => (
             <div className="md:hidden" id="mobile-menu">
-              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <NavLink
                   to="/"
                   className={({ isActive }) =>
@@ -152,7 +164,10 @@ function NavBar() {
                 >
                   Tarjetas de crédito
                 </NavLink>
-                <button className="text-gray-300 hover:bg-red-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                <button
+                  onClick={onLogOut}
+                  className="text-gray-300 hover:bg-red-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                >
                   Cerrar sesion
                 </button>
               </div>

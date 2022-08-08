@@ -124,7 +124,10 @@ export function fetchLogout() {
     dispatch(logout());
 
     try {
-      const response = await fetch(`${API_ROUTES.AUTHENTICATION_LOGOUT}`);
+      const accessKey = localStorage.getItem('accessKey');
+      const response = await fetch(
+        `${API_ROUTES.AUTHENTICATION_LOGOUT}?key=${accessKey}`
+      );
       const data = await response.json();
 
       dispatch(loginSuccess(data));
