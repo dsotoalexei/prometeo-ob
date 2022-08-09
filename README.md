@@ -22,13 +22,17 @@ prometeo_ob
 |-- server
 ```
 
-| Nombre del directorio | Descripción                                      |
-| --------------------- | ------------------------------------------------ |
-| mkdocs                | Documentación del proyecto generada con `mkdocs` |
-| cra-client            | Aplicacion creada utilizando React               |
-| server                | Aplicacion creada utilizando Django              |
+| Nombre del directorio | Descripción                                            |
+| --------------------- | ------------------------------------------------------ |
+| mkdocs                | Documentación del proyecto generada con `mkdocs`       |
+| cra-client            | Aplicacion creada utilizando React (Frontend)          |
+| server                | Aplicacion creada utilizando Django (Backend API Rest) |
 
 ## Requerimientos
+
+> **GENERAL**
+
+- Git V2.37
 
 > **APLICACION `SERVER`**
 
@@ -44,50 +48,117 @@ prometeo_ob
 
 ## Instalación
 
-> **APLICACION `SERVER`**
+> **GENERAL**
 
-1. Posicionarse dentro del directorio `server` y luego ejecutar los comandos siguientes:
+1. Primero clonaremos el proyecto en cualquier directorio
 
 ```bash
-# Generar un entorno virtual
+$> git clone https://github.com/dsotoalexei/prometeo-ob.git && cd prometeo-ob
+```
 
+> **APLICACIÓN `SERVER`**
 
-# Instalar las dependencias
+1. **Posicionarse dentro del directorio `server`**
 
+```bash
+$> cd server
+```
 
-# Posicionarse en src y ejecutar
+2. **Copiar y renombrar el fichero `src/config/.env.template` por `src/config/.env`**
+
+3. **Generar un entorno virtual**
+
+```bash
+$> python -m venv venv
+```
+
+4. **Activar entorno virtual**
+
+```bash
+## Window
+$> .\venv\Scripts\activate
+
+## Linux o Mac
+$> source venv/bin/activate
+```
+
+5. **Instalar dependencias**
+
+```bash
+(venv) $> pip install -r requirements.txt
+```
+
+6. **Posicionar en el directorio `src`**
+
+```bash
+$> cd src
+```
+
+7. **Ejecutar el servidor**
+
+```bash
 $> python manage.py runserver 9099
 ```
 
-> **APLICACION `CRA-CLIENT`**
+8. **Abrir en un navegador la siguiente [URL](http://127.0.0.1:9099)**
 
-1. Posicionarse dentro del directorio `cra-client` y luego ejecutar los comandos siguientes:
+```bash
+http://127.0.0.1:9099
+```
+
+> **APLICACIÓN `CRA-CLIENT`**
+
+1. Posicionarse en el directorio `cra-client`
+
+```bash
+$> cd cra-client 
+```
+
+2. **Copiar y renombrar el fichero `.env_local` a `.env`**
+
+Contenido del fichero
+
+```bash
+REACT_APP_API_HOST=http://127.0.0.1:9099
+```
+
+3. **Instalar las dependencias**
 
 ```bash
 # Instalar las dependencias
 $> npm install
+```
 
+4. **Iniciar el cliente**
+
+```bash
 # Iniciar la aplicacion
 $> npm start
 ```
 
+5. **Abrir en un navegador la siguiente [URL](http://127.0.0.1:3000)**
+
+```bash
+http://127.0.0.1:3000
+```
+
 ## Pantallas
 
-> **APLICACION `SERVER`**
+> **APLICACIÓN `SERVER`**
 
-- **Documentacion del Api con Swagger**
+- **Documentación del Api con Swagger**
 
 ![](./mkdocs/docs/assets/images/server/swagger.png)
 
-> **APLICACION `CRA-CLIENT`**
+> **APLICACIÓN `CRA-CLIENT`**
 
-- **Inicio de sesion**
+- **Inicio de sesióag-0-1g9vq55doag-1-1g9vq55don**
 
 ![](./mkdocs/docs/assets/images/cra-client/login-page.png)
 
 - **Tablero**
 
-![](./mkdocs/docs/assets/images/cra-client/dashboard-page.png)
+![]./mkdocs/docs/assets/images/cra-client/dashboard-page.png)
 
 - **Cuentas**
 
