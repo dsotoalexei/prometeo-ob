@@ -34,13 +34,13 @@ prometeo_ob
 
 - Git V2.37
 
-> **APLICACION `SERVER`**
+> **APLICACIÓN `SERVER`**
 
 - Python V3.9
 
 - Django V3.2
 
-> **APLICACION `CRA-CLIENT`**
+> **APLICACIÓN `CRA-CLIENT`**
 
 - NodeJS V16.15.1
 
