@@ -1,12 +1,13 @@
-from django.apps import apps
+# from django.apps import apps
 from django.test import SimpleTestCase
 
-from .. import InvestmentsAppConfig
+# from .. import AuthenticationAppConfig
 
 
-class ProvidersAppConfigTestCase(SimpleTestCase):
-    def test_apps(self):
-        self.assertEqual(InvestmentsAppConfig.name, "investments")
-        self.assertEqual(
-            apps.get_app_config("investments").name, "server.apps.investments"
-        )
+class AuthenticationAppConfigTestCase(SimpleTestCase):
+    pass
+    # def test_apps(self):
+    #     self.assertEqual(AuthenticationAppConfig.name, "authentication")
+    #     self.assertEqual(
+    #         apps.get_app_config("authentication").name, "server.apps.authentication"
+    #     )

@@ -4,7 +4,7 @@ function AccountCard({ name, number, currency, balance }: IAccountCardProps) {
   return (
     <div className="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
       <article className="overflow-hidden rounded-lg shadow-lg">
-        <h2 className="text-black text-center dark:text-white  text-3xl font-bold">
+        <h2 className="text-black text-center text-3xl font-bold">
           {currency} {balance}
         </h2>
         <div className="flex items-center justify-between leading-tight p-2 md:p-4">
