@@ -1,6 +1,6 @@
 import { LoaderStyled } from './loader.styled';
 
-function Loader() {
+export function Loader() {
   return (
     <LoaderStyled>
       <svg
@@ -55,4 +55,4 @@ function Loader() {
   );
 }
 
-export { Loader, Loader as default };
+export default Loader;
