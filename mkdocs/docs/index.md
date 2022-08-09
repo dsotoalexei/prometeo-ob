@@ -108,7 +108,7 @@ http://127.0.0.1:9099
 
 > **APLICACIÓN `CRA-CLIENT`**
 
-1. Posicionarse en el directorio `cra-client`
+1. **Posicionarse en el directorio `cra-client`**
 
 ```bash
 $> cd cra-client 
@@ -142,6 +142,27 @@ $> npm start
 http://127.0.0.1:3000
 ```
 
+> **APLICACIÓN `CRA-CLIENT CON STORYBOOK`**
+
+1. **Posicionarse en el directorio `cra-client`**
+
+```bash
+$> cd cra-client 
+```
+
+2. **Iniciar storybook**
+
+```bash
+# Iniciar la aplicacion
+$> npm run storybook
+```
+
+3. **Abrir en un navegador la siguiente [URL](http://127.0.0.1:6006)**
+
+```bash
+http://127.0.0.1:6006
+```
+
 ## Pantallas
 
 > **APLICACIÓN `SERVER`**
@@ -167,3 +188,9 @@ http://127.0.0.1:3000
 - **Tarjetas**
 
 ![](./assets/images/cra-client/card-page.png)
+
+> **APLICACIÓN `CRA-CLIENT CON STORYBOOK`**
+
+- **Historia de Account Card**
+
+![](./assets/images/storybook/account-card.png)
